@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <input id="robotUrl" style="width:100%" type="text" value="https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=xxxxxxxx"/>
+	<textarea id="msg" style="width:100%;height:200px;" value="我是机器人好不"></textarea>
+	<button style="display:flex;margin:30px auto;" id="btnSend">发送</button>
+	<script>
+		//关注微信公众号 技术岛Jishudao 体验最新的技术潮流，获取更多实用小工具
+		//微信 13439975582
+		$(function(){
+			$("#btnSend").click(function(){
+				var botData = {
+						"msgtype": "text",
+						"text": {
+							"content": $("#msg").val()
+						}
+				 };
+				 $.ajax({
+						url: $("#robotUrl").val(),
+						type: 'post',
+						dataType: 'json',
+						data: JSON.stringify(botData),
+						success: function(res){
+							console.log(res)
+							if (res.code === 200) {
+							   
+							}   
+						},
+						error: function(e) {
+	 
+						}
+					});
+			});
+		});		
+	</script>
+</body>
+</html>
